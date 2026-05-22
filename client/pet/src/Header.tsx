@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ onSelectCategory }) => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await fetch("https://p1-abih.onrender.com/api/category/get");
+                const res = await fetch("https://p1-abih.onrender.co/category/get");
                 const data: Category[] = await res.json();
                 setCategories(data);
             } catch (err) {

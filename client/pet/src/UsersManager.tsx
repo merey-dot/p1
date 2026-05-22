@@ -34,7 +34,7 @@ const UsersManager = () => {
     const toggleBan = async (id: number) => {
         if (!token) return;
 
-        await fetch(`https://p1-abih.onrender.com/api/admin/banUser/${id}`, {
+        await fetch(`https://p1-abih.onrender.com/admin/banUser/${id}`, {
             method: "PUT",
             headers: { Authorization: `Bearer ${token}` },
         });

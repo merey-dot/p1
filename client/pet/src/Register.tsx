@@ -26,7 +26,7 @@ const Register = () => {
         setLoading(true);
 
         try {
-            const res = await fetch("https://p1-abih.onrender.com/api/auth/register", {
+            const res = await fetch("https://p1-abih.onrender.com/auth/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email, password }),

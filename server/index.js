@@ -14,7 +14,10 @@ const { auth } = require('./middleware/auth')
 
 app.use(cookieParser())
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "https://your-frontend.vercel.app",
+    credentials: true
+}))
 app.use('/auth', authRoute)
 app.use('/user', auth, userRoute)
 app.use('/products', productRoute)

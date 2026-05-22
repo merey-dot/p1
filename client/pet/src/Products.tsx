@@ -21,7 +21,7 @@ const Products: React.FC<Props> = ({ categoryId, favorites, toggleFavorite }) =>
 
     useEffect(() => {
         const getAll = async () => {
-            const res = await fetch('https://p1-abih.onrender.com/api/products/get')
+            const res = await fetch('https://p1-abih.onrender.com/products/get')
             const data = await res.json() as Product[]
             setProducts(data)
         }
