@@ -17,7 +17,7 @@ const UsersManager = () => {
         const load = async () => {
             if (!token) return;
 
-            const res = await fetch("http://localhost:5000/admin/getUsers", {
+            const res = await fetch("https://p1-abih.onrender.com/api/admin/getUsers", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -34,7 +34,7 @@ const UsersManager = () => {
     const toggleBan = async (id: number) => {
         if (!token) return;
 
-        await fetch(`http://localhost:5000/admin/banUser/${id}`, {
+        await fetch(`https://p1-abih.onrender.com/api/admin/banUser/${id}`, {
             method: "PUT",
             headers: { Authorization: `Bearer ${token}` },
         });

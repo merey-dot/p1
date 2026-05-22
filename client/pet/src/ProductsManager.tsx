@@ -33,7 +33,7 @@ const ProductsManager = () => {
     const fetchProducts = async () => {
         if (!token) return;
 
-        const res = await fetch("http://localhost:5000/admin/get", {
+        const res = await fetch("https://p1-abih.onrender.com/api/admin/get", {
             headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -47,7 +47,7 @@ const ProductsManager = () => {
     }, [token]);
 
     const handleDelete = async (id: number) => {
-        await fetch(`http://localhost:5000/admin/delete/${id}`, {
+        await fetch(`https://p1-abih.onrender.com/api/admin/delete/${id}`, {
             method: "DELETE",
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -56,7 +56,7 @@ const ProductsManager = () => {
     };
 
     const handleSaveEdit = async (id: number) => {
-        await fetch(`http://localhost:5000/admin/update/${id}`, {
+        await fetch(`https://p1-abih.onrender.com/api/admin/update/${id}`, {
             method: "PUT",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -70,7 +70,7 @@ const ProductsManager = () => {
     };
 
     const handleAdd = async () => {
-        await fetch("http://localhost:5000/admin/create", {
+        await fetch("https://p1-abih.onrender.com/api/admin/create", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,

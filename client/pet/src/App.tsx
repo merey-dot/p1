@@ -25,7 +25,7 @@ function App() {
   })
 
   useEffect(() => {
-    fetch('http://localhost:5000/products/get')
+    fetch('https://p1-abih.onrender.com/api/products/get')
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(console.error)
