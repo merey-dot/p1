@@ -6,7 +6,7 @@ datasource db {
   provider = "postgresql"
 }
 
-model Users {
+model User {
   id           Int      @id @default(autoincrement())
   name         String
   email        String   @unique
@@ -16,38 +16,38 @@ model Users {
   updatedAt    DateTime @default(now()) @map("updated_at")
   lastname     String?
   banned       Boolean? @default(false)
-  orders       Orders[]
+  orders       Order[]
 
   @@map("users")
 }
 
-model Categories {
-  id       Int        @id @default(autoincrement())
-  category String     @unique
-  products Products[]
+model Categorie {
+  id       Int       @id @default(autoincrement())
+  category String    @unique
+  products Product[]
 
   @@map("categories")
 }
 
-model Products {
+model Product {
   id          Int         @id @default(autoincrement())
   name        String
   price       Int
   categoryId  Int         @map("category_id")
   stock       Int         @default(1)
   description String?     @db.VarChar(255)
-  image       Images[]
+  image       Image[]
   orderItem   OrderItem[]
-  category    Categories  @relation(fields: [categoryId], references: [id])
+  category    Categorie   @relation(fields: [categoryId], references: [id])
 
   @@map("products")
 }
 
-model Images {
-  id        Int      @id @default(autoincrement())
+model Image {
+  id        Int     @id @default(autoincrement())
   image     String
-  productId Int      @map("product_id")
-  product   Products @relation(fields: [productId], references: [id])
+  productId Int     @map("product_id")
+  product   Product @relation(fields: [productId], references: [id])
 
   @@map("images")
 }
@@ -59,13 +59,13 @@ model OrderItem {
   quantity        Int      @default(1)
   priceAtPurchase Int      @map("price_at_purchase")
   createdAt       DateTime @default(now())
-  orders          Orders   @relation(fields: [orderId], references: [id])
-  product         Products @relation(fields: [productId], references: [id])
+  orders          Order    @relation(fields: [orderId], references: [id])
+  product         Product  @relation(fields: [productId], references: [id])
 
   @@map("order_item")
 }
 
-model Orders {
+model Order {
   id        Int         @id @default(autoincrement())
   userId    Int         @map("user_id")
   status    String      @default("pending")
@@ -73,7 +73,7 @@ model Orders {
   total     Int
   addres    String
   items     OrderItem[]
-  user      Users       @relation(fields: [userId], references: [id])
+  user      User        @relation(fields: [userId], references: [id])
 
   @@map("orders")
 }
