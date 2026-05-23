@@ -22,6 +22,6 @@ app.use('/auth', authRoute)
 app.use('/user', auth, userRoute)
 app.use('/products', productRoute)
 app.use('/admin', auth, requireAdmin, adminRoute)
-app.use('/category/get', productController.getCategories)
+app.get('/category/get', productController.getCategories)
 
 app.listen(5000, () => console.log('server started'))
