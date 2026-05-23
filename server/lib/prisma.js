@@ -1,23 +1,10 @@
 const { PrismaClient } = require('@prisma/client')
 const { PrismaPg } = require('@prisma/adapter-pg')
 const { Pool } = require('pg')
-
-const connectionString = process.env.DATABASE_URL
-
-console.log("DATABASE_URL exists:", !!connectionString)
-
-const pool = new Pool({
-    connectionString,
-    ssl: {
-        rejectUnauthorized: false   // ← обязательно для Render
-    }
-})
-
+console.log('db', process.env.DATABASE_URL)
+const pool = new Pool({ connectionString: process.env.DATABASE_URL })
 const adapter = new PrismaPg(pool)
 
-const prisma = new PrismaClient({
-    adapter,
-    log: ['error', 'warn']
-})
+const prisma = new PrismaClient({ adapter })
 
 module.exports = prisma
