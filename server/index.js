@@ -1,3 +1,4 @@
+require('dotenv').config()
 
 const productController = require('./controllers/productController.js')
 const cookieParser = require('cookie-parser')
