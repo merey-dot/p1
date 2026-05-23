@@ -4,6 +4,8 @@ const prisma = require('../lib/prisma.js')
 class ProductController {
     async get(req, res) {
         try {
+            console.log("Prisma объект:", prisma)
+            console.log("Доступные модели:", Object.getOwnPropertyNames(prisma))
             console.log(prisma)
             const result = await prisma.products.findMany()
 
