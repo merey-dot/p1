@@ -15,7 +15,7 @@ const { auth } = require('./middleware/auth')
 app.use(cookieParser())
 app.use(express.json())
 app.use(cors({
-    origin: 'https://p1-cf5zrn3r7-merey-s-projects.vercel.app',
+    origin: 'true',
     credentials: true
 }))
 app.use('/auth', authRoute)
